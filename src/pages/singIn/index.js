@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Input from '../../components/Input/index'
 import Button from '../../components/Button/ButtonAuthentication/index'
 
@@ -13,6 +14,7 @@ function SingIn () {
           <Input placeholder='Seu email' />
           <Input placeholder='Sua senha' type='password' />
           <Button message='Entrar' />
+          <Link to='signup'>Criar conta gratuita</Link>
         </form>
       </Content>
     </Container>

@@ -1,14 +1,8 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 
-import SignIn from './pages/singIn/index';
+import Routes from './routes'
 
-function App() {
-  return (
-    <div className="App">
-      <SignIn />
-    </div>
-  );
-}
+const App = () => <Routes />
 
-export default App;
+export default App
