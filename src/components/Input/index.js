@@ -1,9 +1,8 @@
-import React from 'react';
+import React from 'react'
+import { Input } from './styles'
 
-import { Input } from './styles';
+const input = ({ type = 'text', placeholder }) => (
+  <Input type={type} placeholder={placeholder} />
+)
 
-function input({ type = 'text', placeholder }) {
-  return <Input type={type} placeholder={placeholder} />;
-}
-
-export default input;
+export default input
