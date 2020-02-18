@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { darken } from 'polished'
+import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Button = styled.button`
   margin: 5px 0 0;
@@ -15,4 +15,4 @@ export const Button = styled.button`
   &:hover {
     background: ${darken(0.3, '#3b9eff')};
   }
-`
+`;

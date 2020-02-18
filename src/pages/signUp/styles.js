@@ -10,16 +10,28 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 100%;
+  width: 60vw;
+  padding: 30px 10px;
+  border-radius: 5px;
   background: #fff;
-  max-width: 320px;
   text-align: center;
 
   form {
-    max-height: 50%;
-    padding: 0 10px;
+    max-width: 100%;
+    max-height: 80%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+
+    input {
+      width: 80%;
+      background: #ab59c1;
+    }
+
+    button {
+      width: 80%;
+    }
 
     h1 {
       text-shadow: 0 0 0.2em #ab59c1, 0 0 0.2em #ab59c1;
