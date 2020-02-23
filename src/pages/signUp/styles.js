@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
@@ -23,6 +23,16 @@ export const Content = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    p {
+      font-size: 16px;
+      color: #ff3333;
+      margin-bottom: 15px;
+      border: 2px solid #ff3333;
+      padding: 10px;
+      width: 60%;
+      text-align: center;
+    }
 
     input {
       width: 80%;
