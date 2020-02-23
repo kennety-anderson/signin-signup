@@ -1,11 +1,13 @@
-import React from 'react';
-import { Input } from './styles';
+import React from "react";
+import { Input } from "./styles";
 
-const input = ({ type = 'text', placeholder, onChange = () => {} }) => (
+const input = ({ type, name, placeholder, required, onChange = () => {} }) => (
   <Input
     type={type}
+    name={name}
     placeholder={placeholder}
-    onChange={event => onChange(event)}
+    required={required}
+    onChange={e => onChange(e)}
   />
 );
 

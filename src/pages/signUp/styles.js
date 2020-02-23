@@ -7,6 +7,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  /*
+  input {
+    background: #fff;
+  }
+
+  input:valid {
+    background: black;
+  } */
 `;
 
 export const Content = styled.div`
@@ -27,7 +35,7 @@ export const Content = styled.div`
     p {
       font-size: 16px;
       color: #ff3333;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       border: 2px solid #ff3333;
       padding: 10px;
       width: 60%;
@@ -36,18 +44,30 @@ export const Content = styled.div`
 
     input {
       width: 80%;
-      background: #ab59c1;
+      box-sizing: border-box;
+      box-shadow: none;
+      outline: none;
+      border: none;
+      border-radius: 0px;
+      border-bottom: 2px solid #999;
+      background: #ffff;
+      transition: 0.5s;
+      color: black;
+
+      &:valid {
+        border-bottom: 2px solid #999;
+      }
+    }
+
+    h1 {
+      text-shadow: 0 0 0.1em #ab59c1, 0 0 0.1em #ab59c1;
+      font-family: sans-serif;
+      font-size: 35px;
+      font-weight: bold;
     }
 
     button {
       width: 80%;
-    }
-
-    h1 {
-      text-shadow: 0 0 0.2em #ab59c1, 0 0 0.2em #ab59c1;
-      font-family: sans-serif;
-      font-size: 35px;
-      font-weight: bold;
     }
 
     a {
@@ -60,5 +80,33 @@ export const Content = styled.div`
         opacity: 0.5;
       }
     }
+  }
+
+  form div {
+    width: 100%;
+    position: relative;
+  }
+
+  form div label {
+    position: absolute;
+    top: 10px;
+    left: 10%;
+    color: #999;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+
+  form input:focus ~ label,
+  form input:valid ~ label {
+    top: -12px;
+    left: 10%;
+    color: #f7497d;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  form input:focus,
+  form input:valid {
+    border-bottom: 2px solid #f7497d;
   }
 `;

@@ -10,9 +10,10 @@ function SignUp() {
   const [dataForm, setDataForm] = useState({});
   const [message, setMessage] = useState("");
 
-  const handlerDataForm = (event, key) =>
-    setDataForm({ ...dataForm, [key]: event.target.value });
-
+  const handlerDataForm = e => {
+    setDataForm({ ...dataForm, [e.target.name]: e.target.value });
+    console.log(dataForm);
+  };
   const handlerSubmit = async event => {
     event.preventDefault();
     await apiCustomer
@@ -38,27 +39,47 @@ function SignUp() {
         <form onSubmit={handlerSubmit}>
           <h1> Sign-up </h1>
           {message && <p>{message}</p>}
-          <Input
-            placeholder="Nome"
-            onChange={event => handlerDataForm(event, "name")}
-          />
-          <Input
-            placeholder="Email"
-            onChange={event => handlerDataForm(event, "email")}
-          />
-          <Input
-            placeholder="Cpf"
-            onChange={event => handlerDataForm(event, "cpf")}
-          />
-          <Input
-            placeholder="Data de nascimento"
-            onChange={event => handlerDataForm(event, "birthDate")}
-          />
-          <Input
-            placeholder="Senha"
-            type="password"
-            onChange={event => handlerDataForm(event, "password")}
-          />
+          <div>
+            <Input
+              name="name"
+              onChange={e => handlerDataForm(e)}
+              required="required"
+            />
+            <label>Nome</label>
+          </div>
+          <div>
+            <Input
+              name="email"
+              onChange={e => handlerDataForm(e)}
+              required="required"
+            />
+            <label>Email</label>
+          </div>
+          <div>
+            <Input
+              name="cpf"
+              onChange={e => handlerDataForm(e)}
+              required="required"
+            />
+            <label>Cpf</label>
+          </div>
+          <div>
+            <Input
+              name="birthDate"
+              onChange={e => handlerDataForm(e)}
+              required="required"
+            />
+            <label>Data de nascimento</label>
+          </div>
+          <div>
+            <Input
+              name="password"
+              type="password"
+              onChange={e => handlerDataForm(e)}
+              required="required"
+            />
+            <label>Senha</label>
+          </div>
           <Button message="Cadastrar" />
         </form>
       </Content>
