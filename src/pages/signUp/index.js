@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Input from "../../components/Input/index";
 import Button from "../../components/Button/ButtonAuthentication/index";
-import ButtonUi from "@material-ui/core/Button";
-import { Dialog, DialogActions, DialogTitle } from "@material-ui/core/";
+import Modal from "../../components/Modal/ModalSignUp/index";
 
 import { Container, Content } from "./styles";
 
@@ -11,20 +10,20 @@ import apiCustomer from "../../services/crud-customers";
 function SignUp({ history }) {
   const [dataForm, setDataForm] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-  const [openModal, setOpenModal] = useState(null);
+  const [modal, setModal] = useState();
 
   const handlerDataForm = e =>
     setDataForm({ ...dataForm, [e.target.name]: e.target.value });
 
   useEffect(() => {
-    if (openModal === false) history.push("/");
-  }, [openModal, history]);
+    if (modal === false) history.push("/");
+  }, [modal, history]);
 
-  const handlerSubmit = async event => {
-    event.preventDefault();
+  const handlerSubmit = async e => {
+    e.preventDefault();
     await apiCustomer
       .post("customers", dataForm)
-      .then(async data => setOpenModal(true))
+      .then(async data => setModal(true))
       .catch(err => {
         switch (err.response.status) {
           case 400:
@@ -42,29 +41,7 @@ function SignUp({ history }) {
   return (
     <Container>
       <Content>
-        {openModal && (
-          <Dialog
-            disableBackdropClick
-            disableEscapeKeyDown
-            open={openModal}
-            onClose={() => setOpenModal(false)}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {"Conta criada com sucesso!"}
-            </DialogTitle>
-            <DialogActions>
-              <ButtonUi
-                onClick={() => setOpenModal(false)}
-                color="primary"
-                autoFocus
-              >
-                ok
-              </ButtonUi>
-            </DialogActions>
-          </Dialog>
-        )}
+        {modal && <Modal open={modal} onClose={setModal} />}
         <form onSubmit={handlerSubmit}>
           <h1> Sign-up </h1>
           {errorMessage && <p>{errorMessage}</p>}

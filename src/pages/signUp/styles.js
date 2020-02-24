@@ -7,14 +7,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /*
-  input {
-    background: #fff;
-  }
-
-  input:valid {
-    background: black;
-  } */
 `;
 
 export const Content = styled.div`
@@ -48,14 +40,23 @@ export const Content = styled.div`
       box-shadow: none;
       outline: none;
       border: none;
-      border-radius: 0px;
       border-bottom: 2px solid #999;
       background: #ffff;
       transition: 0.5s;
       color: black;
 
+      &:focus ~ label,
+      &:valid ~ label {
+        top: -12px;
+        left: 10%;
+        color: #f7497d;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      &:focus,
       &:valid {
-        border-bottom: 2px solid #999;
+        border-bottom: 2px solid #f7497d;
       }
     }
 
@@ -94,19 +95,5 @@ export const Content = styled.div`
     color: #999;
     transition: 0.5s;
     pointer-events: none;
-  }
-
-  form input:focus ~ label,
-  form input:valid ~ label {
-    top: -12px;
-    left: 10%;
-    color: #f7497d;
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  form input:focus,
-  form input:valid {
-    border-bottom: 2px solid #f7497d;
   }
 `;
