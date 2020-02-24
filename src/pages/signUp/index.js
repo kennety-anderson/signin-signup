@@ -1,34 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../../components/Input/index";
 import Button from "../../components/Button/ButtonAuthentication/index";
-
-import apiCustomer from "../../services/crud-customers";
+import ButtonUi from "@material-ui/core/Button";
+import { Dialog, DialogActions, DialogTitle } from "@material-ui/core/";
 
 import { Container, Content } from "./styles";
 
-function SignUp() {
-  const [dataForm, setDataForm] = useState({});
-  const [message, setMessage] = useState("");
+import apiCustomer from "../../services/crud-customers";
 
-  const handlerDataForm = e => {
+function SignUp({ history }) {
+  const [dataForm, setDataForm] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
+  const [openModal, setOpenModal] = useState(null);
+
+  const handlerDataForm = e =>
     setDataForm({ ...dataForm, [e.target.name]: e.target.value });
-    console.log(dataForm);
-  };
+
+  useEffect(() => {
+    if (openModal === false) history.push("/");
+  }, [openModal, history]);
+
   const handlerSubmit = async event => {
     event.preventDefault();
     await apiCustomer
       .post("customers", dataForm)
-      .then(data => setMessage("Conta criada com sucesso!"))
+      .then(async data => setOpenModal(true))
       .catch(err => {
         switch (err.response.status) {
           case 400:
-            setMessage("Verifique os campos enviados");
+            setErrorMessage("Verifique os campos enviados");
             break;
           case 422:
-            setMessage("Email já vinculado a uma conta existente!");
+            setErrorMessage("Email já vinculado a uma conta existente!");
             break;
           default:
-            setMessage("Um erro aconteceu, por favor tente mais tarde!");
+            setErrorMessage("Um erro aconteceu, por favor tente mais tarde!");
         }
       });
   };
@@ -36,9 +42,32 @@ function SignUp() {
   return (
     <Container>
       <Content>
+        {openModal && (
+          <Dialog
+            disableBackdropClick
+            disableEscapeKeyDown
+            open={openModal}
+            onClose={() => setOpenModal(false)}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Conta criada com sucesso!"}
+            </DialogTitle>
+            <DialogActions>
+              <ButtonUi
+                onClick={() => setOpenModal(false)}
+                color="primary"
+                autoFocus
+              >
+                ok
+              </ButtonUi>
+            </DialogActions>
+          </Dialog>
+        )}
         <form onSubmit={handlerSubmit}>
           <h1> Sign-up </h1>
-          {message && <p>{message}</p>}
+          {errorMessage && <p>{errorMessage}</p>}
           <div>
             <Input
               name="name"
