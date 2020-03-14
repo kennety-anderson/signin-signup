@@ -1,5 +1,5 @@
-import React from "react";
-import { Input } from "./styles";
+import React from 'react';
+import { Input } from './styles';
 
 const input = ({ type, name, placeholder, required, onChange = () => {} }) => (
   <Input

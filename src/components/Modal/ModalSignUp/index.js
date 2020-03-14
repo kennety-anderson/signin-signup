@@ -1,14 +1,14 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef } from 'react';
 import {
   Dialog,
   DialogActions,
   DialogTitle,
   Button,
-  Slide
-} from "@material-ui/core/";
+  Slide,
+} from '@material-ui/core/';
 
 const Transition = forwardRef(function Transition(props, ref) {
-  return <Slide direction={props.transition || "down"} ref={ref} {...props} />;
+  return <Slide direction={props.transition || 'down'} ref={ref} {...props} />;
 });
 
 const modal = ({ message, button, open, onClose = () => {}, transition }) => (
@@ -22,11 +22,11 @@ const modal = ({ message, button, open, onClose = () => {}, transition }) => (
     aria-describedby="alert-dialog-description"
   >
     <DialogTitle id="alert-dialog-title">
-      {message || "Conta criada com sucesso!"}
+      {message || 'Conta criada com sucesso!'}
     </DialogTitle>
     <DialogActions>
       <Button onClick={() => onClose(false)} color="primary" autoFocus>
-        {button || "ok"}
+        {button || 'ok'}
       </Button>
     </DialogActions>
   </Dialog>

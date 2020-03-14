@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
@@ -10,10 +10,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 60vw;
-  padding: 30px 10px;
-  border-radius: 5px;
-  background: #fff;
+  width: 500px;
+  max-width: 90vw;
   text-align: center;
 
   form {
@@ -25,7 +23,7 @@ export const Content = styled.div`
     flex-direction: column;
 
     p {
-      font-size: 16px;
+      font-size: 20px;
       color: #ff3333;
       margin-bottom: 25px;
       border: 2px solid #ff3333;
@@ -41,16 +39,16 @@ export const Content = styled.div`
       outline: none;
       border: none;
       border-bottom: 2px solid #999;
-      background: #ffff;
+      background: transparent;
       transition: 0.5s;
-      color: black;
+      color: #ffff;
 
       &:focus ~ label,
       &:valid ~ label {
-        top: -12px;
+        top: -16px;
         left: 10%;
         color: #f7497d;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: bold;
       }
 
