@@ -25,7 +25,7 @@ export const Content = styled.div`
     p {
       font-size: 20px;
       color: #ff3333;
-      margin-bottom: 25px;
+      margin-bottom: 45px;
       border: 2px solid #ff3333;
       padding: 10px;
       width: 60%;

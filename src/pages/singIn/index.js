@@ -5,20 +5,21 @@ import Button from '../../components/Button/ButtonAuthentication/index';
 
 import { Container, Content } from './styles';
 
-import apiAuthentication from '../../services/authentication';
+import apiAuthentication from '../../services/auth/api';
+import { login } from '../../services/auth/authentication';
 
-function SingIn() {
+function SingIn({ history }) {
   const [userAuth, setUserAuth] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const data = await apiAuthentication.post('auth', userAuth);
-      console.log(data);
+      const { data } = await apiAuthentication.post('auth', userAuth);
+      login(data.accessToken);
+      history.push('/home');
     } catch (err) {
       setErrorMessage('error');
-      console.log('err', err);
     }
   };
 

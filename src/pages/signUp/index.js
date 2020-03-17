@@ -5,7 +5,7 @@ import Modal from '../../components/Modal/ModalSignUp/index';
 
 import { Container, Content } from './styles';
 
-import apiCustomer from '../../services/crud-customers';
+import apiCustomer from '../../services/crud-customers/api';
 
 function SignUp({ history }) {
   const [dataForm, setDataForm] = useState({});
